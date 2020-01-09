@@ -130,3 +130,13 @@ dmypy.json
 
 # VSCode
 .vscode
+
+# Idea
+.idea/
+
+tv_in/
+tv_out/
+movie_in/
+movie_out/
+music_in/
+music_out/
