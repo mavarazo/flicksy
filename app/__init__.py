@@ -1,6 +1,6 @@
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
-import os
+import os, json
 from flask import Flask, request, current_app
 from flask_bootstrap import Bootstrap
 from config import Config
@@ -11,6 +11,11 @@ bootstrap = Bootstrap()
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+
+    with open(app.config['TV_REGEX']) as config_file:
+        regex_tv = json.load(config_file)
+
+    app.config.update(regex_tv)
 
     bootstrap.init_app(app)
 
