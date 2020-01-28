@@ -13,31 +13,31 @@
         "pattern": "^((?P<seriesname>.+?)[ ._-])?(?P<seasonnumber>[0-9]+)[xX](?P<episodenumberstart>[0-9]+)([xX][0-9]+)*[xX](?P<episodenumberend>[0-9]+)[^\/]*$"
     }, {
         "_comment": "Show.s01e23-24",
-        "pattern": "^((?P<seriesname>.+?)[ ._-])?[Ss](?P<seasonnumber>[0-9]+)[ ._-]?[Ee](?P<episodenumberstart>[0-9]+)([-][Ee]?[0-9]+)*[-][Ee]?(?P<episodenumberend>[0-9]+)[ ._-][^\/]*$"
+        "pattern": "^((?P<seriesname>.+?)[ ._-])?[Ss](?P<seasonnumber>[0-9]+)[ ._-]?[Ee](?P<episodenumberstart>[0-9]+)([-][Ee]?[0-9]+)*[-][Ee]?(?P<episodenumberend>[0-9]+)([ ._-].*|$)"
     }, {
         "_comment": "Show.1x23-24",
-        "pattern": "^((?P<seriesname>.+?)[ ._-])?(?P<seasonnumber>[0-9]+)[xX](?P<episodenumberstart>[0-9]+)([-+][0-9]+)*[-+](?P<episodenumberend>[0-9]+)([.-+ ].*|$)"
+        "pattern": "^((?P<seriesname>.+?)[ ._-])?(?P<seasonnumber>[0-9]+)[xX](?P<episodenumberstart>[0-9]+)([-+][0-9]+)*[-+](?P<episodenumberend>[0-9]+)([ ._-].*|$)"
     }, {
         "_comment": "Show.[1x09-11]",
-        "pattern": "^(?P<seriesname>.+?)[ ._-][?(?P<seasonnumber>[0-9]+)[xX](?P<episodenumberstart>[0-9]+)([-+] [0-9]+)*[-+](?P<episodenumberend>[0-9]+)][^\\/]*$"
+        "pattern": "^(?P<seriesname>.+?)[ ._-]\\[?(?P<seasonnumber>[0-9]+)[xX](?P<episodenumberstart>[0-9]+)([-+] [0-9]+)*[-+](?P<episodenumberend>[0-9]+)\\][^\\/]*$"
     }, {
-        "_comment": "Show- [012]",
-        "pattern": "^((?P<seriesname>.+?)[ ._-])?[(?P<episodenumber>[0-9]+)][^\\/]*$"
+        "_comment": "Show - [012]",
+        "pattern": "^((?P<seriesname>.+?)[ ._-])?\\[(?P<episodenumber>[0-9]+)\\][^\\/]*$"
     }, {
         "_comment": "Show.s0101, Show.0201",
         "pattern": "^(?P<seriesname>.+?)[ ._-][Ss](?P<seasonnumber>[0-9]{2})[ ._-]?(?P<episodenumber>[0-9]{2})[^0-9]*$"
     }, {
         "_comment": "Show.1x09",
-        "pattern": "^((?P<seriesname>.+?)[ ._-])?[?(?P<seasonnumber>[0-9]+)[xX](?P<episodenumber>[0-9]+)]?[^\\/]*$"
+        "pattern": "^((?P<seriesname>.+?)[ ._-])?\\[?(?P<seasonnumber>[0-9]+)[xX](?P<episodenumber>[0-9]+)\\]?[^\\/]*$"
     }, {
         "_comment": "Show.s01.e01, Show.s01_e01, Show.s01 - e01",
-        "pattern": "^((?P<seriesname>.+?)[ ._-])?[?[Ss](?P<seasonnumber>[0-9]+)[ ]?[._- ]?[ ]?[Ee]?(?P<episodenumber>[0-9]+)]?[^\\/]*$"
+        "pattern": "^((?P<seriesname>.+?)[ ._-])?[?[Ss](?P<seasonnumber>[0-9]+)[ ]?[ ._-]?[ ]?[Ee]?(?P<episodenumber>[0-9]+)]?[^\\/]*$"
     }, {
         "_comment": "Show.2010.01.02...",
         "pattern": "^((?P<seriesname>.+?)[ ._-])?(?P<year>\\d{4})[ ._-](?P<month>\\d{2})[ ._-](?P<day>\\d{2})[^\/]*$"
     }, {
         "_comment": "Show - [01.09]",
-        "pattern": "^((?P<seriesname>.+?))[ ._-]?[(?P<seasonnumber>[0-9]+?)[.](?P<episodenumber>[0-9]+?)][ ._-]?[^\\/]*$"
+        "pattern": "^((?P<seriesname>.+?))[ ._-]?\\[(?P<seasonnumber>[0-9]+?)[.](?P<episodenumber>[0-9]+?)\\][ ._-]?[^\\/]*$"
     }, {
         "_comment": "Show - S2 E 02 - ...",
         "pattern": "^(?P<seriesname>.+?)[ ]?[ ._-][ ]?[Ss](?P<seasonnumber>[0-9]+)[ ._-]?[Ee]?[ ]?(?P<episodenumber>[0-9]+)[^\\/]*$"
