@@ -5,6 +5,7 @@ from flask import Flask, request, current_app
 from flask_bootstrap import Bootstrap
 from config import Config
 
+
 bootstrap = Bootstrap()
 
 
@@ -14,7 +15,6 @@ def create_app(config_class=Config):
 
     with open(app.config['TV_REGEX']) as config_file:
         regex_tv = json.load(config_file)
-
     app.config.update(regex_tv)
 
     bootstrap.init_app(app)
@@ -27,6 +27,9 @@ def create_app(config_class=Config):
 
     from app.tv import bp as tv_bp
     app.register_blueprint(tv_bp)
+
+    from app.tv import thetvdbclient
+    thetvdbclient.init_app(app.config['THETVDB_APIKEY'])
 
     if not app.debug and not app.testing:
         if not os.path.exists('logs'):
