@@ -1,5 +1,18 @@
 import requests
 
+class Serie():
+
+    def __init__(self, id, seriesName, banner=None, firstAired=None, image=None, overview=None, poster=None):
+        self.banner = banner
+        self.firstAired = firstAired
+        self.id = id
+        self.overview = overview
+        self.poster = poster
+        self.seriesName = seriesName
+
+    def __str__(self):
+        return f"{self.seriesName} ({self.id})"
+        
 
 class TheTvDbException(Exception):
 
@@ -9,10 +22,10 @@ class TheTvDbException(Exception):
         self.response = response
 
     def __str__(self):
-        return "%s (%s)" % (self.status, message)
+        return f"{self.status} ({self.message})"
 
     def __repr__(self):
-        return "%s(status=%s)" % (self.__class__.__name__, self.status)
+        f"{self.__class__.__name__} (status={self.status})"
 
 
 class TheTvDbClient():
@@ -46,8 +59,25 @@ class TheTvDbClient():
             return response.json()
         elif response.status_code == 401:
             self.login()
-            self.search_series(name)
+            return self.search_series(name)
         elif response.status_code == 404:
+            raise TheTvDbException(
+                response.status_code, 'No records are found that match your query.')
+        else:
+            raise TheTvDbException(response.status_code)
+
+    def search_episode(self, seriesId, seasonnumber, episodenumber):
+        params = {'airedSeason': seasonnumber,
+                  'airedEpisode': episodenumber}
+        headers = {'Authorization': 'Bearer %s' % self.token}
+        response = requests.get(f"{self.BASE_URL}/series/{seriesId}/episodes/query", params=params, headers=headers)
+        if response:
+            return response.json()
+        elif response.status_code == 401:
+            self.login()
+            return self.search_series(name)
+        elif response.status_code == 404:
+            print(f"{seriesId}/{seasonnumber}/{episodenumber}")
             raise TheTvDbException(
                 response.status_code, 'No records are found that match your query.')
         else:

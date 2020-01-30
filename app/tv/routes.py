@@ -13,8 +13,11 @@ def index():
     for file in files:
         m = search_with_regex_for_tv_patterns(file)
         if m:
-            thetvdbclient.search_series(m['seriesname'])
-
+            print(m)
+            serie = thetvdbclient.search_series(m['seriesname'])['data'][0]     
+            episode = thetvdbclient.search_episode(serie['id'], int(m['seasonnumber']), int(m['episodenumber']))['data'][0]
+            print('Serie: {}, Season: {}, Episode: {}, Title: {}'.format(serie['seriesName'], episode['airedSeason'], episode['airedEpisodeNumber'], episode['episodeName']))
+            
     return render_template('tv/index.html', title='TV', files=files)
 
 
